@@ -1,0 +1,57 @@
+{% include 'include.html' %}
+{% include 'navbar.html' %}
+
+{% block body %}
+
+{% ifequal error "no" %}
+<script type="text/javascript">
+	alert('Logged In Sucessfully..........')
+	window.location = ('{% url 'adminhome' %}')
+</script>
+{% endifequal%}
+
+{% ifequal error "yes" %}
+<script type="text/javascript">
+	alert('Invalid Credentials..........')
+</script>
+{% endifequal%}
+<form  method="post">
+        {% csrf_token %}
+  <section class="vh-100" style="background-color: #508bfc;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-5">Admin Login</h3>
+
+            <div class="form-outline flex-fill mb-0">
+                <input type="text" id="form3Example1c" placeholder="Username" 
+				class="form-control" name="username" />
+                <label class="form-label" for="form3Example1c"></label>
+              </div>
+
+            
+
+            <div class="form-outline flex-fill mb-0">
+                <input type="password" id="form3Example4c"placeholder="password" 
+				class="form-control" name="password"/>
+                <label class="form-label" for="form3Example4c"></label>
+              </div>
+
+            <input class="btn btn-primary btn-lg btn-block"value="login" type="submit">
+
+            <hr class="my-4">
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+
+{% endblock %}
